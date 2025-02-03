@@ -156,7 +156,7 @@ def init(bot: Bot, bot_state):
         _mem = psutil.virtual_memory();
         final = discord.Embed(
             title=f"**Server Info**",
-            description=f"""**Location** : ` Germany 📍 `
+            description=f"""**Location** : ` Singapore 📍 `
 **Latency** : ` {round(bot.latency * 1000, 2)}ms 🟢 `
 **Uptime** : ` {Dependencies.uptime_string(uptime())} `""",
             colour=Dependencies.colour()
@@ -170,7 +170,7 @@ def init(bot: Bot, bot_state):
             value=f"` {psutil.cpu_freq().current / 1000}Ghz  {round(psutil.cpu_percent(), 2)}% \n {psutil.cpu_count()}x Cores `",
             inline=True
         )
-        final.set_footer(text=f"Nuremburg (Germany) nbg1-dc3, eu-central on {bot_state}")
+        final.set_footer(text=f"Singapore sin-dc1, ap-southeast on {bot_state}")
         await ctx.respond(embed=final)
 
     # @bot.slash_command(description="VERY VERY STUPID LLM; Based on Google's flan-t5-small dataset")
