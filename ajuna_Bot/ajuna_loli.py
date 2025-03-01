@@ -4,6 +4,9 @@ import json
 import Commands
 import Events
 
+import dotenv
+dotenv.load_dotenv()
+
 with open('ajuna_Data/config.json', 'r') as file:
     _d = json.load(file)
     bot_state = _d['state']
