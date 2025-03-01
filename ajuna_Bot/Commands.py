@@ -259,6 +259,12 @@ def init(bot: Bot, bot_state):
     co = cohere.ClientV2(api_key=os.environ.get("COHERE_API_KEY"))
     @bot.slash_command()
     async def ask(ctx: discord.commands.ApplicationContext, question: str):
+        message = await ctx.respond(embed=discord.Embed(
+            title=question,
+            description='thinking...',
+            colour=Dependencies.colour()
+        ))
+        
         model = 'command-r-08-2024'
         previous_messages.append({
             "role":"user",
@@ -269,12 +275,6 @@ def init(bot: Bot, bot_state):
             model=model,
             messages=previous_messages
         )
-        
-        message = await ctx.respond(embed=discord.Embed(
-            title=question,
-            description='thinking...',
-            colour=Dependencies.colour()
-        ))
         
         previous_messages.append({
             "role":"assistant",
