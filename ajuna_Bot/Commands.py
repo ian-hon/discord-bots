@@ -270,6 +270,12 @@ def init(bot: Bot, bot_state):
             messages=previous_messages
         )
         
+        message = await ctx.respond(embed=discord.Embed(
+            title=question,
+            description='thinking...',
+            colour=Dependencies.colour()
+        ))
+        
         previous_messages.append({
             "role":"assistant",
             "content":response.message.content[-1].text
@@ -281,4 +287,4 @@ def init(bot: Bot, bot_state):
             colour=Dependencies.colour(),
         )
         final.set_footer(text=f"{model} model on {bot_state}")
-        await ctx.respond(embed=final)
+        await message.edit(embed=final)
